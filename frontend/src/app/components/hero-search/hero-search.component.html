@@ -1,0 +1,49 @@
+<div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        FINDE EVENTS<br>
+        IN <span class="highlight">DEINER</span><br>
+        NÄHE<span class="highlight">!</span>
+      </h1>
+    </div>
+    
+    <div class="search-panel">
+      <h2>Was möchtest du heute erleben?</h2>
+      
+      <div class="search-form">
+        <div class="form-group">
+          <label>Suche nach</label>
+          <select [(ngModel)]="selectedEventType">
+            <option value="" disabled selected>Wähle Event Typ</option>
+            <option value="concert">Konzerte</option>
+            <option value="theater">Theater</option>
+            <option value="sport">Sport</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label>Standort</label>
+          <select [(ngModel)]="selectedLocation">
+            <option value="" disabled selected>Wähle einen standort</option>
+            <option value="berlin">Berlin</option>
+            <option value="hamburg">Hamburg</option>
+            <option value="munich">München</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label>Wann</label>
+          <select [(ngModel)]="selectedDateTime">
+            <option value="" disabled selected>Wähle Datum und Zeit</option>
+            <option value="today">Heute</option>
+            <option value="tomorrow">Morgen</option>
+            <option value="weekend">Dieses Wochenende</option>
+          </select>
+        </div>
+  
+        <button class="search-button" (click)="searchEvents()">
+          Nach Events Suchen
+        </button>
+      </div>
+    </div>
+  </div>
