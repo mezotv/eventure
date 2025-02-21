@@ -1,6 +1,6 @@
 # Start both processes and keep them in the same terminal
 $backend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd backend && npm run start:dev"
-$frontend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd frontend && npm run start"
+$frontend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd frontend && npm run start -n"
 
 # Trap CTRL+C and kill both processes
 try {
