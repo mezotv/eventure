@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@property --text {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #070b14;
+  }
+  
+  @property --background {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #f2f4fb;
+  }
+  
+  @property --primary {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #436ec2;
+  }
+  
+  @property --secondary {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #cd9bdf;
+  }
+  
+  @property --accent {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #ce68ce;
+  }
+  
