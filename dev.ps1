@@ -1,6 +1,6 @@
 # Start both processes and keep them in the same terminal
-$frontend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd frontend && npm run watch"
 $backend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd backend && npm run start:dev"
+$frontend = Start-Process -NoNewWindow -PassThru -FilePath "cmd.exe" -ArgumentList "/c cd frontend && npm run start"
 
 # Trap CTRL+C and kill both processes
 try {
@@ -8,6 +8,6 @@ try {
     Wait-Process -Id $frontend.Id, $backend.Id
 } finally {
     Write-Host "Stopping applications..."
-    Stop-Process -Id $frontend.Id -Force
-    Stop-Process -Id $backend.Id -Force
+    Stop-Process -Id $frontend.Id
+    Stop-Process -Id $backend.Id
 }
