@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start Angular app in the background
-(cd frontend && npm run start) &
+(cd frontend && npm run start -- -n) &
 FRONTEND_PID=$!
 
 # Start NestJS app in the background
