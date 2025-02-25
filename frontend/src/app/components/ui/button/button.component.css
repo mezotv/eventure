@@ -35,7 +35,7 @@
   }
   
   .button-primary {
-    background-color: #3182ce;
+    background-color: var(--primary);
     color: white;
   
     &:hover:not(:disabled) {
@@ -44,7 +44,7 @@
   }
   
   .button-secondary {
-    background-color: #718096;
+    background-color: var(--secondary);
     color: white;
   
     &:hover:not(:disabled) {
