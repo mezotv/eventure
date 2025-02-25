@@ -1,0 +1,32 @@
+<button
+  [type]="submit() ? 'submit' : 'button'"
+  [disabled]="disabled() || loading()"
+  [ngClass]="[
+    'app-button',
+    'button-' + type(),
+    'button-' + size(),
+    disabled() ? 'button-disabled' : '',
+    block() ? 'button-block' : '',
+    loading() ? 'button-loading' : ''
+  ]"
+  (click)="handleClick($event)"
+>
+  <div class="button-content" [ngClass]="{ 'invisible': loading() }">
+    @if (iconLeft()) {
+        <span class="button-icon button-icon-left">
+      <i class="{{iconLeft()}}"></i>
+    </span>
+    }
+    <ng-content></ng-content>
+    @if (iconRight()) {
+    <span class="button-icon button-icon-right">
+      <i class="{{iconRight()}}"></i>
+    </span>
+    }
+  </div>
+  @if (loading()) {
+    <div class="button-spinner">
+    <div class="spinner"></div>
+  </div>
+  }
+</button>

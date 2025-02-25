@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeroSearchComponent } from './components/hero-search/hero-search.component';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from './components/ui/button/button.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, HeroSearchComponent],
-  template: `
-    <app-navbar />
-    <app-hero-search />
-  `,
-  styles: []
+  imports: [CommonModule, ButtonComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  log(event: MouseEvent): void {
+    console.log('Hello, frontend', event);
+  }
+}
