@@ -1,40 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 @property --text {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #070b14;
-  }
-  
-  @property --background {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #f2f4fb;
-  }
-  
-  @property --primary {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #436ec2;
-  }
-  
-  @property --secondary {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #cd9bdf;
-  }
-  
-  @property --accent {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #ce68ce;
-  }
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #070b14;
+}
+
+@property --background {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f2f4fb;
+}
+
+@property --primary {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #436ec2;
+}
+
+@property --secondary {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #cd9bdf;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ce68ce;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
