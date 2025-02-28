@@ -36,3 +36,26 @@ h1 {
 }
 
 
+
+.login {
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.example-button-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 4px;
+}

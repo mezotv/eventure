@@ -11,7 +11,7 @@
 
 h1 {
     text-align: center;
-    font-size:xx-large;
+    font-size: xx-large;
     color: var(--mat-sys-primary);
     margin-bottom: 0.5rem;
 }
@@ -44,4 +44,26 @@ mat-flat-button {
 .login-button-row {
     content: var(--primary);
     margin-bottom: 0.5rem;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 4px;
+}
+
+.success-message {
+    color: #4caf50;
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 4px;
+}
+
+.mat-mdc-form-field {
+    margin-bottom: 16px;
 }
