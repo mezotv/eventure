@@ -1,21 +1,26 @@
+<h1>Eventure</h1>
 <mat-card class="login" appearance="outlined">
     <mat-card-content>
-        <h1>Login Page</h1>
+        <h2>Anmelden</h2>
         <form class="example-form">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="full-width">
             <mat-label>Benutzername oder E-Mail</mat-label>
-            <input matInput placeholder="Bitte gib deinen Benutzernamen oder deine E-Mail-Adresse ein:">
+            <input matInput placeholder="">
             </mat-form-field>
         
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="full-width">
             <mat-label>Passwort</mat-label>
-            <input matInput placeholder="Bitte gib dein Passwort ein:">
+            <input matInput placeholder="">
             </mat-form-field>
+            
+            <section>
+                <div class="example-button"></div>
+                <div class="example-button-row">
+                  <button mat-flat-button class="full-width">Login</button>
+                </div>
+            </section>
 
-            <div class="example-button">
-                <button mat-flat-button>Login</button>
-            </div>
-
+            <p>Noch nicht angemeldet? <a href="register">Zum Registrieren.</a></p>
 
         </form>
     </mat-card-content>

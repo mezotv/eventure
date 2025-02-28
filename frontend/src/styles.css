@@ -48,3 +48,27 @@ select {
   background-position: right 1rem center;
   background-size: 1em;
 }
+
+
+
+/*
+@import '~@angular/material/theming';
+
+@include mat();
+
+$custom-theme: mat-light-theme((
+  color: (
+    primary: orange,
+    accent: red,
+  ),
+));
+
+@include angular-material-theme($custom-theme);
+@use '@angular/material' as mat;
+:root {
+  @include mat.button-overrides((
+    filled-container-color: orange,
+    filled-label-text-color: red,
+  ));
+}
+*/
