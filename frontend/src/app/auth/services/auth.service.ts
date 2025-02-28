@@ -17,6 +17,7 @@ export interface TokenRefreshResponse {
 
 interface JwtPayload {
   sub: string;
+  fullName: string;
   exp: number;
   iat: number;
 }
@@ -144,6 +145,18 @@ export class AuthService {
     try {
       const decoded = jwtDecode<JwtPayload>(token);
       return decoded.sub;
+    } catch {
+      return null;
+    }
+  }
+
+  getFullName(): string | null {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return null;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      return decoded.fullName;
     } catch {
       return null;
     }
