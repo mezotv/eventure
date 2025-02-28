@@ -1,0 +1,29 @@
+.spacer {
+    flex: 1;
+}
+
+.active-link {
+    color: white;
+    font-weight: bold; /* Optional: Fettgedruckt für den aktiven Link */
+}
+
+a {
+    color: #3863e6;
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    margin-right: 20px; /* Abstand zwischen den Links */
+}
+
+.mat-toolbar {
+    background-color:#a0bcec;
+    /**background-color: var(--primary);*/
+}
+
+/*
+--text: #01090a;
+--background: #f7fdfe;
+--primary: #26d4e2;
+--secondary: #79a3ed;
+--accent: #4c74e7;
+
+#3863e6
+*/

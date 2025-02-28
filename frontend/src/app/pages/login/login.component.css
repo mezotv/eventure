@@ -11,7 +11,9 @@
 h1 {
     text-align: center;
     font-size:xx-large;
-    color: var(--mat-sys-primary);
+    color: #3863e6;
+    /*
+    color: var(--mat-sys-primary);*/
     margin-bottom: 0.5rem;
 }
 
@@ -23,19 +25,14 @@ h1 {
     max-width: 100vw;
     max-height: 100dvh;
     margin: auto;
-    background-color: var(--background);
+    background-color: #cbddfc;
+    /*background-color: var(--background);*/
 }
 
 .example-button {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 200px;
-    background-color: var(--primary);
-}
-
-.example-button-row {
     width: 100%;
     content: var(--primary);
     margin-bottom: 0.5rem;
 }
+
+
