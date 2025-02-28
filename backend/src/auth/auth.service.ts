@@ -3,10 +3,11 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { RefreshToken, User } from 'src/entity/entities';
-import { JwtPayload } from './auth.guard';
+import { JwtPayload } from './entity/jwtPayload.entity';
 import { MoreThan, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoginParamsDto, RegisterParamsDto } from './auth.controller';
+import { RegisterParamsDto } from './entity/registerParams.entity';
+import { LoginParamsDto } from './entity/loginParams.entity';
 import { ConfigService } from '@nestjs/config';
 import constants from './constants';
 

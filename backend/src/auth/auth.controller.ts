@@ -1,54 +1,13 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { IsOptional, IsString } from 'class-validator';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from './jwtData.decorator';
-
-export class LoginParamsDto {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsOptional()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  email?: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsOptional()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  fullname?: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  password: string;
-}
-
-export class RegisterParamsDto {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  fullName: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  email: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  @IsString()
-  password: string;
-}
+import { LoginParamsDto } from './entity/loginParams.entity';
+import { RegisterParamsDto } from './entity/registerParams.entity';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
-
-  @Get('test')
-  test() {
-    return 'hi';
-  }
-
-  @Get('register')
-  aa() {
-    return 'hi';
-  }
 
   @Post('register')
   async register(@Body() body: RegisterParamsDto) {
