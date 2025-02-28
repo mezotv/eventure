@@ -1,31 +1,51 @@
 <mat-card class="register" appearance="outlined">
     <mat-card-content>
         <h1>Registrieren</h1>
-        <form class="example-form">
+        <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
             <mat-form-field class="full-width">
-            <mat-label>Voller Name</mat-label>
-            <input matInput placeholder="">
+                <mat-label>Voller Name</mat-label>
+                <input matInput formControlName="fullName" placeholder="Name und Nachname">
+                <mat-error
+                    *ngIf="registerForm.get('fullName')?.invalid && (registerForm.get('fullName')?.dirty || registerForm.get('fullName')?.touched)">
+                    Name wird benötigt
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width">
-            <mat-label>E-Mail Adresse</mat-label>
-            <input matInput placeholder="">
+                <mat-label>E-Mail Adresse</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="email@example.com">
+                <mat-error
+                    *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                    Bitte geben Sie eine gültige E-Mail-Adresse ein
+                </mat-error>
             </mat-form-field>
-        
+
             <mat-form-field class="full-width">
-            <mat-label>Passwort</mat-label>
-            <input matInput placeholder="">
+                <mat-label>Passwort</mat-label>
+                <input matInput formControlName="password" type="password" placeholder="Passwort">
+                <mat-error
+                    *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                    Passwort muss mindestens 6 Zeichen lang sein
+                </mat-error>
             </mat-form-field>
-            
+
             <section>
-                <div class="login-button"></div>
+                <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+                <div *ngIf="successMessage" class="success-message">
+                    {{ successMessage }}
+                </div>
                 <div class="login-button-row">
-                  <button mat-flat-button class="full-width">Registrieren</button>
+                    <button mat-flat-button color="primary" class="full-width" type="submit"
+                        [disabled]="registerForm.invalid || isLoading">
+                        {{ isLoading ? 'Wird registriert...' : 'Registrieren' }}
+                    </button>
                 </div>
             </section>
 
-            <p><a href="login">Zurück zum Login.</a></p>
+            <p>Bereits registriert? <a routerLink="/login">Zurück zum Login.</a></p>
 
         </form>
     </mat-card-content>
