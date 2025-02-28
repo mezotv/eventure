@@ -1,14 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './auth/components/login/login.component';
-import { RegisterComponent } from './auth/components/register/register.component';
-import { authGuard } from './auth/guards/auth.guard';
+import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 
-// TODO: use marens login component
-
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  //   { path: '' },
+  { path: 'login', component: LoginComponentOld },
   { path: 'register', component: RegisterComponent },
   //   {
   //     path: 'dashboard',
@@ -18,4 +14,9 @@ export const routes: Routes = [
   //       ),
   //     canActivate: [authGuard],
   //   },
+];
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
 ];
