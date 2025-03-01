@@ -1,0 +1,51 @@
+<app-sidepanel>
+  <div class="profile-container">
+    <h2 class="page-title">Profile</h2>
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <img [src]="user?.avatar" alt="Profile Picture" class="avatar" />
+        <div class="profile-info">
+          <h3>{{ user?.first_name }} {{ user?.last_name }}</h3>
+          <p>{{ "@" + user?.username }}</p>
+          <p>{{ user?.email }}</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-row">
+          <strong>Phone:</strong>
+          <span> {{ user?.phone_number }}</span>
+        </div>
+
+        <div class="detail-row">
+          <strong>Address:</strong>
+          <span>
+            {{ user?.address?.street_address }}, {{ user?.address?.city }},
+            {{ user?.address?.state }}, {{ user?.address?.country }}</span
+          >
+        </div>
+
+        <div class="detail-row">
+          <strong>Job Title:</strong>
+          <span> {{ user?.employment?.title }}</span>
+        </div>
+
+        <div class="detail-row">
+          <strong>Key Skill:</strong>
+          <span> {{ user?.employment?.key_skill }}</span>
+        </div>
+
+        <div class="detail-row">
+          <strong>Subscription Plan:</strong>
+          <span> {{ user?.subscription?.plan }}</span>
+        </div>
+
+        <div class="detail-row">
+          <strong>Status:</strong>
+          <span> {{ user?.subscription?.status }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-sidepanel>

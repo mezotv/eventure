@@ -1,0 +1,72 @@
+.sidepanel-container {
+  height: 100vh;
+  background-color: #e2e7ed;
+}
+
+.sidepanel {
+  width: 250px;
+  background-color: #e2e7ed;
+  padding: 16px;
+}
+
+.logo {
+  font-weight: bold;
+  color: #6f42c1;
+  margin-bottom: 32px;
+}
+
+.content-area {
+  background-color: white;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* New Header Styles */
+.content-header {
+  background-color: #e2e7ed;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  border-bottom: 2px solid #c3c2c2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  padding: 10px;
+  color: red;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav-item i {
+  font-size: 18px;
+  color: #565555;
+  padding: 10px;
+}
+
+.nav-item.active-link {
+  background-color: #6f42c1;
+  color: white; 
+}
+
+.nav-item.active-link i {
+  color: white !important;
+}
+
+.nav-item.active-link span {
+  font-weight: bold;
+  color: white !important;
+}
+
+
+

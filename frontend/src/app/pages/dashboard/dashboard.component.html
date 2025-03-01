@@ -1,0 +1,33 @@
+<app-sidepanel>
+  <div class="dashboard-content">
+    <h2 class="page-title">Dashboard</h2>
+
+    <div class="card-container">
+      <div class="stat-card" *ngFor="let card of cards">
+        <div class="card-content">
+          <div class="card-icon">
+            <i [class]="card.icon"></i>
+          </div>
+          <div class="card-info">
+            <h5>{{ card.title }}</h5>
+            <p>{{ card.value }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-card">
+        <h5>Weekly Revenue</h5>
+        <!-- Placeholder for chart -->
+        <div class="chart-placeholder">[Chart]</div>
+      </div>
+
+      <div class="chart-card">
+        <h5>Daily Traffic</h5>
+        <!-- Placeholder for chart -->
+        <div class="chart-placeholder">[Chart]</div>
+      </div>
+    </div>
+  </div>
+</app-sidepanel>

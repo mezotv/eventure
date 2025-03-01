@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidepanel-container">
+  <mat-sidenav mode="side" opened class="sidepanel">
+    <h4 class="logo">Eventure</h4>
+    <mat-nav-list>
+      <mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+        class="nav-item"
+      >
+        <i class="fas fa-th-large"></i>
+        <span>Dashboard</span>
+      </mat-list-item>
+
+      <mat-list-item
+        routerLink="/events"
+        routerLinkActive="active-link"
+        class="nav-item"
+      >
+        <i class="fas fa-calendar-alt"></i>
+        <span>Events</span>
+      </mat-list-item>
+
+      <mat-list-item
+        routerLink="/messages"
+        routerLinkActive="active-link"
+        class="nav-item"
+      >
+        <i class="fas fa-envelope"></i>
+        <span>Messages</span>
+      </mat-list-item>
+
+      <mat-list-item
+        routerLink="/profile"
+        routerLinkActive="active-link"
+        class="nav-item"
+      >
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-area">
+    <div class="content-header">
+      <div class="spacer"></div>
+      <div class="logout-button">Logout</div>
+    </div>
+
+    <div class="page-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
