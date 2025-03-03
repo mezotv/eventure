@@ -1,0 +1,66 @@
+    <div class="main-content">
+      <div class="hero-section">
+        <div class="hero-text">
+          <h1>
+            <div>FINDE EVENTS</div>
+            <div>IN <span class="gradient-text">DEINER</span></div>
+            <div>NÄHE<span class="blue-text">!</span></div>
+          </h1>
+        </div>
+      </div>
+  
+      <div class="search-panel">
+        <h2>Was möchtest du heute erleben?</h2>
+        
+        <form>
+          <div class="search-field">
+            <label>Suche nach</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="eventType" placeholder="Wähle Event Typ">
+                <mat-option value="concert">Konzerte</mat-option>
+                <mat-option value="theater">Theater</mat-option>
+                <mat-option value="festival">Festivals</mat-option>
+                <mat-option value="sport">Sport</mat-option>
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <div class="search-field">
+            <label>Standort</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="location" placeholder="Wähle einen standort">
+                <mat-option value="berlin">Berlin</mat-option>
+                <mat-option value="munich">München</mat-option>
+                <mat-option value="hamburg">Hamburg</mat-option>
+                <mat-option value="cologne">Köln</mat-option>
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <div class="search-field">
+            <label>Wann</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="date" placeholder="Wähle Datum und Zeit">
+                <mat-option value="today">Heute</mat-option>
+                <mat-option value="tomorrow">Morgen</mat-option>
+                <mat-option value="weekend">Dieses Wochenende</mat-option>
+                <mat-option value="nextweek">Nächste Woche</mat-option>
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <button mat-flat-button type="submit" class="search-button">
+            Nach Events Suchen
+          </button>
+        </form>
+      </div>
+    </div>
