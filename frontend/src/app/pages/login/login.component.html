@@ -1,10 +1,11 @@
+<body class="html">
 <mat-card class="login" appearance="outlined">
     <mat-card-content>
         <h1>Anmelden</h1>
         <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width">
                 <mat-label>E-Mail</mat-label>
-                <input matInput formControlName="email" type="email" placeholder="Email">
+                <input matInput formControlName="email" type="email" placeholder="E-Mail">
                 <mat-error
                     *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
                     Bitte geben Sie eine gültige E-Mail-Adresse ein
@@ -24,9 +25,10 @@
                 <div *ngIf="errorMessage" class="error-message">
                     {{ errorMessage }}
                 </div>
-                <div class="example-button-row">
-                    <button mat-flat-button color="primary" class="full-width" type="submit"
-                        [disabled]="loginForm.invalid || isLoading">
+                <div class="login-button-row">
+                    <button mat-flat-button class="full-width" class="login-button" type="submit"
+                        [disabled]="loginForm.invalid || isLoading"
+                        [ngClass]="{'loading': isLoading}">
                         {{ isLoading ? 'Wird angemeldet...' : 'Login' }}
                     </button>
                 </div>
@@ -36,3 +38,4 @@
         </form>
     </mat-card-content>
 </mat-card>
+</body>

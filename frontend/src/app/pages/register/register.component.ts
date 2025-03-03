@@ -38,7 +38,8 @@ export class RegisterComponent {
   private router = inject(Router);
 
   registerForm: FormGroup = this.fb.group({
-    fullName: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
@@ -54,10 +55,10 @@ export class RegisterComponent {
     this.errorMessage = null;
     this.successMessage = null;
 
-    const { fullName, email, password } = this.registerForm.value;
+    const { firstName, lastName,email, password } = this.registerForm.value;
 
     // TODO: on register soll es login rest call machen um die JWT auth daten zu kriegen anstelle von auf login zu leiten
-    this.authService.register(fullName, email, password).subscribe({
+    this.authService.register(firstName, lastName,email, password).subscribe({
       next: () => {
         this.successMessage =
           'Registrierung erfolgreich! Weiterleitung zur Anmeldung...';

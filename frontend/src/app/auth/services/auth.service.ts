@@ -55,13 +55,15 @@ export class AuthService {
   }
 
   register(
-    fullName: string,
+    firstName: string,
+    lastName: string,
     email: string,
     password: string
   ): Observable<{ success: boolean }> {
     return this.http
       .post<{ success: boolean }>(`${this.apiUrl}/register`, {
-        fullName,
+        firstName,
+        lastName,
         email,
         password,
       })
