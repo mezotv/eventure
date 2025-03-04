@@ -1,5 +1,5 @@
 .container {
-    height: 100svh;
+  height: 100svh;
   height: 100vh;
 }
 
@@ -11,7 +11,7 @@
   width: 100%;
 }
 .container div > * {
-    flex-shrink: 0; /* Prevents content from shrinking */
-    max-width: 100%; /* Ensures content doesn't overflow */
-    width: auto; /* Allows content to maintain its natural width */
-  }
+  flex-shrink: 0;
+  max-width: 100%;
+  width: auto;
+}
