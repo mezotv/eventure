@@ -20,7 +20,7 @@
 @property --primary {
   syntax: "<color>";
   inherits: false;
-  initial-value: #436ec2;
+  initial-value: #1a73e8;
 }
 
 @property --secondary {
