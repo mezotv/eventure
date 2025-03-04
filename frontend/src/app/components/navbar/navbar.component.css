@@ -1,37 +1,60 @@
-  /* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  max-width: 75rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.logo-event {
+  color: var(--primary);
+}
+
+.logo-ture {
+  color: #000;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-button {
+  color: #000;
+}
+
+.register-button {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 0.25rem;
+}
+
+/* Responsive styles */
+@media (max-width: 48rem) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .hero-section {
+    min-height: 18.75rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .search-panel {
+    width: 100%;
+    min-width: auto;
+  }
+
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    margin: 0 auto;
-    max-width: 1200px;
+    padding: 1rem;
   }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-  
-  .logo-event {
-    color: var(--primary);
-  }
-  
-  .logo-ture {
-    color: #000;
-  }
-  
-  .auth-buttons {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .login-button {
-    color: #000;
-  }
-  
-  .register-button {
-    background-color: var(--primary);
-    color: white;
-    border-radius: 4px;
-  }
+}

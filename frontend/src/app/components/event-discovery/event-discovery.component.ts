@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,6 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './event-discovery.component.css'
 })
 export class EventDiscoveryComponent implements OnInit {
+  @Input() type = ['Konzert', 'Festival', 'Theater', 'Sport', 'Kunst', 'Kultur'];
+  @Input() location = ['Berlin', 'München', 'Heidenheim', 'Köln'];
+  @Input() date = ['Heute', 'Morgen', 'Diese Woche', 'Diesen Monat'];
+  
   eventSearchForm: FormGroup;
   
   constructor(private fb: FormBuilder) {
