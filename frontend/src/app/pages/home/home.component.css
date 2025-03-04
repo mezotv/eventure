@@ -1,0 +1,17 @@
+.container {
+  height: 100svh;
+  height: 100vh;
+}
+
+.container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.container div > * {
+  flex-shrink: 0;
+  max-width: 100%;
+  width: auto;
+}

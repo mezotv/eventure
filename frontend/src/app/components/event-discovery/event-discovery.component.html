@@ -1,0 +1,63 @@
+    <div class="main-content">
+      <div class="hero-section">
+        <div class="hero-text">
+          <h1>
+            <div>FINDE EVENTS</div>
+            <div>IN <span class="gradient-text">DEINER</span></div>
+            <div>NÄHE<span class="blue-text">!</span></div>
+          </h1>
+        </div>
+      </div>
+  
+      <div class="search-panel">
+        <h2>Was möchtest du heute erleben?</h2>
+        
+        <form>
+          <div class="search-field">
+            <label>Suche nach</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="eventType" placeholder="Wähle Event Typ">
+                @for (event of type; track $index) {
+                  <mat-option (value)="event.toLowerCase()">{{event}}</mat-option>
+                }
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <div class="search-field">
+            <label>Standort</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="location" placeholder="Wähle einen standort">
+                @for (standort of location; track $index) {
+                  <mat-option (value)="standort.toLowerCase()">{{standort}}</mat-option>
+                }
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <div class="search-field">
+            <label>Wann</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="date" placeholder="Wähle Datum und Zeit">
+                @for (datum of date; track $index) {
+                  <mat-option (value)="datum.toLowerCase()">{{datum}}</mat-option>
+                }
+              </mat-select>
+              <div matSuffix class="dropdown-icon">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-form-field>
+          </div>
+          
+          <button mat-flat-button type="submit" class="search-button">
+            Nach Events Suchen
+          </button>
+        </form>
+      </div>
+    </div>
