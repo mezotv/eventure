@@ -14,7 +14,7 @@
   }
   
   .logo-event {
-    color: #1a73e8; /* Material blue */
+    color: var(--primary);
   }
   
   .logo-ture {
@@ -31,7 +31,7 @@
   }
   
   .register-button {
-    background-color: #1a73e8; /* Material blue */
+    background-color: var(--primary);
     color: white;
     border-radius: 4px;
   }
