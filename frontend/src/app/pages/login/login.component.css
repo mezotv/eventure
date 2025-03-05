@@ -1,28 +1,18 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-}
-
 .full-width {
     width: 100%;
 }
 
 h1 {
     text-align: center;
-    font-size: xx-large;
+    font-size: 2rem;
     color: var(--mat-sys-primary);
     margin-bottom: 0.5rem;
 }
 
 .login {
-    position: fixed;
-    inset: 0px;
-    width: fit-content;
-    height: fit-content;
-    max-width: 100vw;
-    max-height: 100dvh;
-    margin: auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
     background-color: var(--background);
 }
 
@@ -39,28 +29,48 @@ mat-flat-button {
 }
 
 .login-button-row {
-    content: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .error-message {
     color: #f44336;
-    font-size: 12px;
-    margin: 10px 0;
-    padding: 10px;
+    font-size: 0.75rem;
+    margin: 0.625rem 0;
+    padding: 0.625rem;
     background-color: rgba(244, 67, 54, 0.1);
     border-radius: 4px;
 }
 
 .success-message {
     color: #4caf50;
-    font-size: 12px;
-    margin: 10px 0;
-    padding: 10px;
+    font-size: 0.75rem;
+    margin: 0.625rem 0;
+    padding: 0.625rem;
     background-color: rgba(76, 175, 80, 0.1);
     border-radius: 4px;
 }
 
 .mat-mdc-form-field {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+}
+
+@media (max-width: 600px) {
+    .login {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    mat-card-content {
+        padding: 1rem;
+    }
 }

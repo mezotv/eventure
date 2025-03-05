@@ -12,6 +12,10 @@
   font-weight: 700;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .logo-event {
   color: var(--primary);
 }
