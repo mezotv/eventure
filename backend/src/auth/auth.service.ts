@@ -2,12 +2,13 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
-import { RefreshToken, User } from 'src/entity/entities';
-import { JwtPayload } from './entity/jwtPayload.entity';
+import { RefreshToken } from 'src/entity/RefreshToken';
+import { User } from 'src/entity/User';
+import { JwtPayload } from './entity/JwtPayload';
 import { MoreThan, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RegisterParamsDto } from './entity/registerParams.entity';
-import { LoginParamsDto } from './entity/loginParams.entity';
+import { RegisterParamsDto } from './entity/RegisterParams';
+import { LoginParamsDto } from './entity/LoginParams';
 import { ConfigService } from '@nestjs/config';
 import constants from './constants';
 
