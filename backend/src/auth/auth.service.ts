@@ -23,13 +23,13 @@ export class AuthService {
   ) {}
 
   async register(body: RegisterParamsDto) {
-    const { fullName, email, password } = body;
+    const { firstName, lastName,email, password } = body;
     const userByEmail = await this.usersService.findOneByEmail(email);
     if (userByEmail) throw new UnauthorizedException('Email already exists');
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await this.usersService.createUser(fullName, email, hashedPassword);
+    await this.usersService.createUser(firstName, lastName, email, hashedPassword);
 
     return { success: true };
   }
@@ -61,7 +61,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload: JwtPayload = { sub: user.id, fullname: user.fullName };
+    const payload: JwtPayload = { sub: user.id, firstName: user.firstName, lastName: user.lastName };
     const accessToken = this.jwtService.sign(payload, {
       expiresIn: constants.expiry,
       secret: this.config.getOrThrow('SECRET'),
