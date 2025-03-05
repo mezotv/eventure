@@ -17,7 +17,8 @@ export interface TokenRefreshResponse {
 
 interface JwtPayload {
   sub: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   exp: number;
   iat: number;
 }
@@ -55,13 +56,15 @@ export class AuthService {
   }
 
   register(
-    fullName: string,
+    firstName: string,
+    lastName: string,
     email: string,
     password: string
   ): Observable<{ success: boolean }> {
     return this.http
       .post<{ success: boolean }>(`${this.apiUrl}/register`, {
-        fullName,
+        firstName,
+        lastName,
         email,
         password,
       })
@@ -150,13 +153,25 @@ export class AuthService {
     }
   }
 
-  getFullName(): string | null {
+  getfirstName(): string | null {
     const token = localStorage.getItem('accessToken');
     if (!token) return null;
 
     try {
       const decoded = jwtDecode<JwtPayload>(token);
-      return decoded.fullName;
+      return decoded.firstName;
+    } catch {
+      return null;
+    }
+  }
+
+  getlastName(): string | null {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return null;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      return decoded.lastName;
     } catch {
       return null;
     }

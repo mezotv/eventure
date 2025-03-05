@@ -5,7 +5,10 @@ import { RefreshToken } from './RefreshToken';
 @Entity()
 export class User extends BaseEntity {
   @Column()
-  fullName: string;
+  firstName: string;
+
+  @Column()
+  lastName: string;
 
   @Column({ unique: true })
   email: string;
