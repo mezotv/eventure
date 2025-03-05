@@ -7,10 +7,10 @@ import { User } from 'src/entity/User';
 import { JwtPayload } from './entity/JwtPayload';
 import { MoreThan, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RegisterParamsDto } from './entity/RegisterParams';
-import { LoginParamsDto } from './entity/LoginParams';
 import { ConfigService } from '@nestjs/config';
 import constants from './constants';
+import { RegisterParamsDto } from './entity/RegisterParams';
+import { LoginParamsDto } from './entity/LoginParams';
 
 @Injectable()
 export class AuthService {

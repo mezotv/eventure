@@ -1,10 +1,11 @@
-import { Entity, Column, ManyToOne } from 'typeorm';
+import { Entity, Column, ManyToOne, Index } from 'typeorm';
 import { BaseEntity } from './BaseEntity';
 import { User } from './User';
 
 @Entity()
 export class Event extends BaseEntity {
   @Column()
+  @Index()
   title: string;
 
   @Column('text')
@@ -17,6 +18,7 @@ export class Event extends BaseEntity {
   visibility: 'public' | 'private' | 'unlisted';
 
   @Column({ type: 'text' })
+  @Index()
   category: 'music' | 'sports' | 'culture' | 'other';
 
   @Column({ nullable: true })
@@ -24,4 +26,17 @@ export class Event extends BaseEntity {
 
   @Column({ nullable: true })
   maxParticipants?: number;
+
+  @Column({ nullable: true })
+  @Index()
+  eventDate?: Date;
+
+  @Column({ nullable: true })
+  location?: string;
+
+  @Column({ default: false })
+  isOnline: boolean;
+
+  @Column({ nullable: true })
+  meetingLink?: string;
 }
