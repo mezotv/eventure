@@ -65,7 +65,6 @@ mat-flat-button {
     box-sizing: border-box;
 }
 
-/* Add responsive styles */
 @media (max-width: 600px) {
     .register {
         max-width: 100%;
