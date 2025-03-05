@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RefreshToken, User } from 'src/entity/entities';
+import { RefreshToken } from 'src/entity/RefreshToken';
+import { User } from 'src/entity/User';
 import { AuthService } from 'src/auth/auth.service';
 import { ConfigModule } from '@nestjs/config';
 

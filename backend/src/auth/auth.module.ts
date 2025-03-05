@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RefreshToken } from 'src/entity/entities';
+import { RefreshToken } from 'src/entity/RefreshToken';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
