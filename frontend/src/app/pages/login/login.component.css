@@ -20,7 +20,7 @@ h1 {
 }
 
 .login {
-    position: fixed;
+    position: auto;
     inset: 0px;
     width: fit-content;
     height: fit-content;

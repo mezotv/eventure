@@ -9,6 +9,10 @@
 
 }
 
+.html {
+    background-color: #d0e0fc;
+}
+
 h1 {
     text-align: center;
     font-size: xx-large;
@@ -17,7 +21,7 @@ h1 {
 }
 
 .register {
-    position: fixed;
+    position: auto;
     inset: 0px;
     width: fit-content;
     height: fit-content;
