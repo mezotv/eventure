@@ -27,6 +27,9 @@ interface JwtPayload {
   providedIn: 'root',
 })
 export class AuthService {
+  getEmail() {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = `${environment.apiUrl}/auth`;
   private currentUserSubject = new BehaviorSubject<JwtPayload | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
@@ -130,6 +133,18 @@ export class AuthService {
   isAuthenticated(): boolean {
     const token = localStorage.getItem('accessToken');
     return !!token && !this.isTokenExpired(token);
+  }
+
+  getFullName(): string | null {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return null;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      return decoded.firstName + ' ' + decoded.lastName;
+    } catch {
+      return null;
+    }
   }
 
   private isTokenExpired(token: string): boolean {

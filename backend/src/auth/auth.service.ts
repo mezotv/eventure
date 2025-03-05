@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
@@ -23,13 +24,18 @@ export class AuthService {
   ) {}
 
   async register(body: RegisterParamsDto) {
-    const { firstName, lastName,email, password } = body;
+    const { firstName, lastName, email, password } = body;
     const userByEmail = await this.usersService.findOneByEmail(email);
     if (userByEmail) throw new UnauthorizedException('Email already exists');
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await this.usersService.createUser(firstName, lastName, email, hashedPassword);
+    await this.usersService.createUser(
+      firstName,
+      lastName,
+      email,
+      hashedPassword,
+    );
 
     return { success: true };
   }
@@ -61,15 +67,23 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload: JwtPayload = { sub: user.id, firstName: user.firstName, lastName: user.lastName };
+    const payload: JwtPayload = {
+      sub: user.id,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      firstName: user.firstName,
+      lastName: user.lastName,
+    };
     const accessToken = this.jwtService.sign(payload, {
       expiresIn: constants.expiry,
       secret: this.config.getOrThrow('SECRET'),
     });
-    const refreshToken = this.jwtService.sign(payload, {
-      expiresIn: constants.refreshExpiry,
-      secret: this.config.getOrThrow('REFRESH_SECRET'),
-    });
+    const refreshToken = this.jwtService.sign(
+      {},
+      {
+        expiresIn: constants.refreshExpiry,
+        secret: this.config.getOrThrow('REFRESH_SECRET'),
+      },
+    );
 
     const hashedToken = await bcrypt.hash(refreshToken, 10);
     const expiresAt = new Date(Date.now() + constants.refreshExpiry * 1000);

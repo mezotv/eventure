@@ -2,8 +2,13 @@
   <div class="logo" routerLink="/">
     <span class="logo-event">Event</span><span class="logo-ture">ure</span>
   </div>
+  @if(!auth.isAuthenticated()) {
   <div class="auth-buttons">
     <a mat-button class="login-button" routerLink="/login">Anmelden</a>
     <a mat-flat-button class="register-button" routerLink="/register">Registrieren</a>
   </div>
+  } @else {
+  
+  }
+
 </div>
