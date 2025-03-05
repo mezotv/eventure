@@ -41,6 +41,8 @@ body {
   min-height: 100vh;
   background-color: var(--background);
   color: var(--text);
+  margin: 0;
+  padding: 0;
 }
 
 select {
@@ -49,4 +51,14 @@ select {
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1em;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet {
+  flex: 1;
 }
