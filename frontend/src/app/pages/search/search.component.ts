@@ -430,24 +430,29 @@ export class SearchComponent implements OnInit {
           'https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=2075',
       },
     ];
-
-    if (params.type) {
-      mockEvents = mockEvents.filter(
-        (event) => event.type.toLowerCase() === params.type.toLowerCase()
+    if (params.types && params.types.length > 0) {
+      mockEvents = mockEvents.filter((event) =>
+        params.types.some(
+          (type: string) => event.type.toLowerCase() === type.toLowerCase()
+        )
       );
     }
 
-    if (params.location) {
-      mockEvents = mockEvents.filter(
-        (event) =>
-          event.location.toLowerCase() === params.location.toLowerCase()
+    if (params.locations && params.locations.length > 0) {
+      mockEvents = mockEvents.filter((event) =>
+        params.locations.some(
+          (location: string) =>
+            event.location.toLowerCase() === location.toLowerCase()
+        )
       );
     }
 
-    if (params.date === 'diese woche') {
-      mockEvents = mockEvents.slice(0, 5);
-    } else if (params.date === 'heute') {
-      mockEvents = mockEvents.slice(0, 3);
+    if (params.startDate && params.endDate) {
+      if (params.date === 'diese woche') {
+        mockEvents = mockEvents.slice(0, 5);
+      } else if (params.date === 'heute') {
+        mockEvents = mockEvents.slice(0, 3);
+      }
     }
 
     if (query) {
