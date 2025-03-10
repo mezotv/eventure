@@ -5,7 +5,7 @@
   <div class="nav-links">
     <a class="nav-link" routerLink="/search">Suche</a>
   </div>
-  @if(!auth.isAuthenticated() && fullName === "") {
+  @if(!auth.isAuthenticated()) {
   <div class="auth-buttons">
     <a mat-button class="login-button" routerLink="/login">Anmelden</a>
     <a mat-flat-button class="register-button" routerLink="/register">Registrieren</a>
