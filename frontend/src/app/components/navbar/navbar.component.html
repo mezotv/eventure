@@ -32,7 +32,7 @@
   <div class="mobile-links">
     <a class="mobile-link" routerLink="/search" (click)="closeMobileMenu()">Suche</a>
   </div>
-  @if(!auth.isAuthenticated() && fullName === "") {
+  @if(!auth.isAuthenticated()) {
   <div class="mobile-auth">
     <a class="mobile-link" routerLink="/login" (click)="closeMobileMenu()">Anmelden</a>
     <a class="mobile-link highlight" routerLink="/register" (click)="closeMobileMenu()">Registrieren</a>
