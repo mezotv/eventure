@@ -44,8 +44,7 @@ jobs:
         run: |
           cd frontend
           npm run format
-
-      # Commit changes if any
+          
       - uses: stefanzweifel/git-auto-commit-action@v4
         id: format-files
         with:
@@ -53,43 +52,19 @@ jobs:
           skip_checkout: true
           branch: "formatting-${{ github.sha }}"
           create_branch: true
-          
-      # Push the branch explicitly to ensure changes are available
-      - name: Push formatting branch
-        if: steps.format-files.outputs.changes_detected == 'true'
-        run: git push origin formatting-${{ github.sha }} --force
-          
-      # Create PR using GitHub CLI if files were formatted
-      - name: Create PR with formatted files
+
+      # create PR using GitHub CLI if files were formatted
+      - name: create PR with formatted files
         if: steps.format-files.outputs.changes_detected == 'true'
         id: create-pr
-        run: |
-          # Ensure we have the latest changes
-          git fetch origin formatting-${{ github.sha }}:formatting-${{ github.sha }}
-          git checkout formatting-${{ github.sha }}
-          
-          # Check if there are actual differences between branches
-          if git diff --quiet main..formatting-${{ github.sha }}; then
-            echo "No differences found between branches, skipping PR creation"
-          else
-            gh pr create --base main --head formatting-${{ github.sha }} --title 'Merge formatting into main' --body 'Created by Github action'
-          fi
+        run: git checkout formatting-${{ github.sha }} && gh pr create --base main --head formatting-${{ github.sha }} --title 'Merge formatting into main' --body 'Created by Github action'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      # Merge PR using GitHub CLI only if PR was created
-      - name: Merge PR with adjusted formatting
-        if: steps.create-pr.outcome == 'success' && steps.format-files.outputs.changes_detected == 'true'
+
+      # merge PR using GitHub CLI
+      - name: merge PR with adjusted formatting
+        if: steps.format-files.outputs.changes_detected == 'true'
         id: merge-pr
-        run: |
-          # Find the PR number for the formatting branch
-          PR_NUMBER=$(gh pr list --head formatting-${{ github.sha }} --json number --jq '.[0].number')
-          
-          # Only try to merge if a PR number is found
-          if [ -n "$PR_NUMBER" ]; then
-            gh pr merge $PR_NUMBER --admin --merge --subject 'Merge formatting' --delete-branch
-          else
-            echo "No PR found to merge"
-          fi
+        run: gh pr merge --admin --merge --subject 'Merge formatting' --delete-branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
