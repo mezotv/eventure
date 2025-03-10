@@ -325,6 +325,7 @@ export class SearchComponent implements OnInit {
   }
 
   generateMockEvents(params: any, query?: string): any[] {
+    // Create mock events with proper ISO date fields
     let mockEvents = [
       {
         id: 1,
@@ -335,6 +336,7 @@ export class SearchComponent implements OnInit {
           'Ein fantastisches Sommerfestival mit Live-Musik und Unterhaltung für die ganze Familie.',
         day: '15',
         month: 'AUG',
+        date: '2025-08-15', // ISO format date
         tags: ['Musik', 'Outdoor', 'Familie'],
         image:
           'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?q=80&w=2070',
@@ -348,6 +350,7 @@ export class SearchComponent implements OnInit {
           'Ein Abend mit den schönsten klassischen Kompositionen in der Münchner Philharmonie.',
         day: '22',
         month: 'JUL',
+        date: '2025-07-22', // ISO format date
         tags: ['Klassik', 'Orchester'],
         image:
           'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974',
@@ -361,6 +364,7 @@ export class SearchComponent implements OnInit {
           'Das legendäre Rock-Festival mit den besten Bands aus aller Welt.',
         day: '05',
         month: 'SEP',
+        date: '2025-09-05', // ISO format date
         tags: ['Rock', 'Live', 'Festival'],
         image:
           'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=2070',
@@ -374,6 +378,7 @@ export class SearchComponent implements OnInit {
           'Eine bewegende Inszenierung des Klassikers auf der Bühne des Berliner Theaters.',
         day: '10',
         month: 'AUG',
+        date: '2025-08-10', // ISO format date
         tags: ['Drama', 'Klassiker'],
         image:
           'https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=2071',
@@ -387,6 +392,7 @@ export class SearchComponent implements OnInit {
           'Zeitgenössische Kunst von aufstrebenden Künstlern aus ganz Europa.',
         day: '18',
         month: 'JUL',
+        date: '2025-03-12', // ISO format date
         tags: ['Modern', 'Galerie'],
         image:
           'https://images.unsplash.com/photo-1531913764164-f85c52beb936?q=80&w=1974',
@@ -399,6 +405,7 @@ export class SearchComponent implements OnInit {
         description: 'Spannendes Bundesligaspiel in der Voith-Arena.',
         day: '26',
         month: 'AUG',
+        date: '2025-03-26', // ISO format date
         tags: ['Fußball', 'Bundesliga'],
         image:
           'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2024',
@@ -412,6 +419,7 @@ export class SearchComponent implements OnInit {
           'Eine Nacht voller Swing und Jazz mit internationalen Künstlern.',
         day: '03',
         month: 'SEP',
+        date: '2025-09-03', // ISO format date
         tags: ['Jazz', 'Nachtleben'],
         image:
           'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2071',
@@ -425,11 +433,14 @@ export class SearchComponent implements OnInit {
           'Ein Wochenende voller kultureller Highlights aus aller Welt.',
         day: '12',
         month: 'AUG',
+        date: '2025-08-12', // ISO format date
         tags: ['International', 'Kulinarik'],
         image:
           'https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=2075',
       },
     ];
+  
+    // Filter by types array
     if (params.types && params.types.length > 0) {
       mockEvents = mockEvents.filter((event) =>
         params.types.some(
@@ -437,24 +448,31 @@ export class SearchComponent implements OnInit {
         )
       );
     }
-
+  
+    // Filter by locations array
     if (params.locations && params.locations.length > 0) {
       mockEvents = mockEvents.filter((event) =>
         params.locations.some(
-          (location: string) =>
-            event.location.toLowerCase() === location.toLowerCase()
+          (location: string) => event.location.toLowerCase() === location.toLowerCase()
         )
       );
     }
-
+  
+    // Filter by date range
     if (params.startDate && params.endDate) {
-      if (params.date === 'diese woche') {
-        mockEvents = mockEvents.slice(0, 5);
-      } else if (params.date === 'heute') {
-        mockEvents = mockEvents.slice(0, 3);
-      }
+      const startDate = new Date(params.startDate);
+      const endDate = new Date(params.endDate);
+      
+      // Set the end date to the end of the day for inclusive comparison
+      endDate.setHours(23, 59, 59, 999);
+      
+      mockEvents = mockEvents.filter((event) => {
+        const eventDate = new Date(event.date);
+        return eventDate >= startDate && eventDate <= endDate;
+      });
     }
-
+  
+    // Search query
     if (query) {
       const lowercaseQuery = query.toLowerCase();
       mockEvents = mockEvents.filter(
@@ -466,7 +484,7 @@ export class SearchComponent implements OnInit {
           )
       );
     }
-
+  
     return mockEvents;
   }
 }
