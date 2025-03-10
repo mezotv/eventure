@@ -116,7 +116,7 @@
               @for (event of events; track event.id) {
                 <div class="event-item">
                   <div class="event-image">
-                    <div class="event-month">{{ event.month }}</div>
+                    <div class="event-month">{{ getMonthAbbreviation(event.date) + " " + getDayFromDate(event.date) }}</div>
                     <img 
                       [src]="event.image || 'https://source.unsplash.com/300x200/?' + event.type.toLowerCase()" 
                       alt="{{ event.title }}"

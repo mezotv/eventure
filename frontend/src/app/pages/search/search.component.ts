@@ -10,6 +10,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+interface Event {
+  id: number;
+  title: string;
+  type: string;
+  location: string;
+  description: string;
+  day: string;
+  date: string;
+  tags: string[];
+  image: string;
+}
+
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -324,8 +336,35 @@ export class SearchComponent implements OnInit {
       .join(' ');
   }
 
-  generateMockEvents(params: any, query?: string): any[] {
-    // Create mock events with proper ISO date fields
+  getMonthAbbreviation(isoDate: string): string {
+    if (!isoDate) return '';
+
+    const date = new Date(isoDate);
+    const monthNames = [
+      'JAN',
+      'FEB',
+      'MAR',
+      'APR',
+      'MAY',
+      'JUN',
+      'JUL',
+      'AUG',
+      'SEP',
+      'OCT',
+      'NOV',
+      'DEC',
+    ];
+    return monthNames[date.getMonth()];
+  }
+
+  getDayFromDate(isoDate: string): string {
+    if (!isoDate) return '';
+
+    const date = new Date(isoDate);
+    return date.getDate().toString();
+  }
+
+  generateMockEvents(params: any, query?: string): Event[] {
     let mockEvents = [
       {
         id: 1,
@@ -335,7 +374,6 @@ export class SearchComponent implements OnInit {
         description:
           'Ein fantastisches Sommerfestival mit Live-Musik und Unterhaltung für die ganze Familie.',
         day: '15',
-        month: 'AUG',
         date: '2025-08-15', // ISO format date
         tags: ['Musik', 'Outdoor', 'Familie'],
         image:
@@ -349,7 +387,6 @@ export class SearchComponent implements OnInit {
         description:
           'Ein Abend mit den schönsten klassischen Kompositionen in der Münchner Philharmonie.',
         day: '22',
-        month: 'JUL',
         date: '2025-07-22', // ISO format date
         tags: ['Klassik', 'Orchester'],
         image:
@@ -363,7 +400,6 @@ export class SearchComponent implements OnInit {
         description:
           'Das legendäre Rock-Festival mit den besten Bands aus aller Welt.',
         day: '05',
-        month: 'SEP',
         date: '2025-09-05', // ISO format date
         tags: ['Rock', 'Live', 'Festival'],
         image:
@@ -377,7 +413,6 @@ export class SearchComponent implements OnInit {
         description:
           'Eine bewegende Inszenierung des Klassikers auf der Bühne des Berliner Theaters.',
         day: '10',
-        month: 'AUG',
         date: '2025-08-10', // ISO format date
         tags: ['Drama', 'Klassiker'],
         image:
@@ -391,7 +426,6 @@ export class SearchComponent implements OnInit {
         description:
           'Zeitgenössische Kunst von aufstrebenden Künstlern aus ganz Europa.',
         day: '18',
-        month: 'JUL',
         date: '2025-03-12', // ISO format date
         tags: ['Modern', 'Galerie'],
         image:
@@ -404,7 +438,6 @@ export class SearchComponent implements OnInit {
         location: 'Heidenheim',
         description: 'Spannendes Bundesligaspiel in der Voith-Arena.',
         day: '26',
-        month: 'AUG',
         date: '2025-03-26', // ISO format date
         tags: ['Fußball', 'Bundesliga'],
         image:
@@ -418,7 +451,6 @@ export class SearchComponent implements OnInit {
         description:
           'Eine Nacht voller Swing und Jazz mit internationalen Künstlern.',
         day: '03',
-        month: 'SEP',
         date: '2025-09-03', // ISO format date
         tags: ['Jazz', 'Nachtleben'],
         image:
@@ -432,14 +464,13 @@ export class SearchComponent implements OnInit {
         description:
           'Ein Wochenende voller kultureller Highlights aus aller Welt.',
         day: '12',
-        month: 'AUG',
         date: '2025-08-12', // ISO format date
         tags: ['International', 'Kulinarik'],
         image:
           'https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=2075',
       },
     ];
-  
+
     // Filter by types array
     if (params.types && params.types.length > 0) {
       mockEvents = mockEvents.filter((event) =>
@@ -448,30 +479,31 @@ export class SearchComponent implements OnInit {
         )
       );
     }
-  
+
     // Filter by locations array
     if (params.locations && params.locations.length > 0) {
       mockEvents = mockEvents.filter((event) =>
         params.locations.some(
-          (location: string) => event.location.toLowerCase() === location.toLowerCase()
+          (location: string) =>
+            event.location.toLowerCase() === location.toLowerCase()
         )
       );
     }
-  
+
     // Filter by date range
     if (params.startDate && params.endDate) {
       const startDate = new Date(params.startDate);
       const endDate = new Date(params.endDate);
-      
+
       // Set the end date to the end of the day for inclusive comparison
       endDate.setHours(23, 59, 59, 999);
-      
+
       mockEvents = mockEvents.filter((event) => {
         const eventDate = new Date(event.date);
         return eventDate >= startDate && eventDate <= endDate;
       });
     }
-  
+
     // Search query
     if (query) {
       const lowercaseQuery = query.toLowerCase();
@@ -484,7 +516,7 @@ export class SearchComponent implements OnInit {
           )
       );
     }
-  
+
     return mockEvents;
   }
 }
