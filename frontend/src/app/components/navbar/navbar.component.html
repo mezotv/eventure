@@ -11,15 +11,25 @@
     <a mat-flat-button class="register-button" routerLink="/register">Registrieren</a>
   </div>
   } @else {
-  <button mat-button [matMenuTriggerFor]="beforeMenu" class="name">
-    {{ fullName }}
-  </button>
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <a mat-menu-item routerLink="/profile">Profile</a>
-    <a mat-menu-item routerLink="/dashboard">Dashboard</a>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/logout">Logout</button>
-  </mat-menu>
+    <button mat-button [matMenuTriggerFor]="userMenu" class="name">
+      {{ fullName }}
+    </button>
+    
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <a mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        Profile
+      </a>
+      <a mat-menu-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/logout">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </button>
+    </mat-menu>
   }
   <div class="hamburger" (click)="toggleMobileMenu()">
     <span></span>

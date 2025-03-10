@@ -4,10 +4,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatButtonModule, RouterModule, MatMenuModule, MatDividerModule],
+  imports: [MatButtonModule, RouterModule, MatMenuModule, MatDividerModule, MatIcon],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -16,7 +17,11 @@ export class NavbarComponent {
 
   protected isLoggedIn = this.auth.isAuthenticated();
 
-  protected fullName = this.auth.getFullName();
+  protected fullName: string | null = null
+
+  ngOnInit() {
+      this.fullName = this.auth.getFullName();
+  }
 
   mobileMenuOpen = false;
 
