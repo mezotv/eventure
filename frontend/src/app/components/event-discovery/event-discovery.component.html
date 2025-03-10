@@ -12,13 +12,13 @@
   <div class="search-panel">
     <h2>Was möchtest du heute erleben?</h2>
 
-    <form>
+    <form [formGroup]="eventSearchForm" (ngSubmit)="searchEvents()">
       <div class="search-field">
         <label>Suche nach</label>
         <mat-form-field appearance="outline">
           <mat-select formControlName="eventType" placeholder="Wähle Event Typ">
-            @for (event of type; track $index) {
-            <mat-option (value)="event.toLowerCase()">{{event}}</mat-option>
+            @for (event of type; track event) {
+              <mat-option [value]="event.toLowerCase()">{{event}}</mat-option>
             }
           </mat-select>
           <div matSuffix class="dropdown-icon">
@@ -31,8 +31,8 @@
         <label>Standort</label>
         <mat-form-field appearance="outline">
           <mat-select formControlName="location" placeholder="Wähle einen standort">
-            @for (standort of location; track $index) {
-            <mat-option (value)="standort.toLowerCase()">{{standort}}</mat-option>
+            @for (standort of location; track standort) {
+              <mat-option [value]="standort.toLowerCase()">{{standort}}</mat-option>
             }
           </mat-select>
           <div matSuffix class="dropdown-icon">
@@ -45,8 +45,8 @@
         <label>Wann</label>
         <mat-form-field appearance="outline">
           <mat-select formControlName="date" placeholder="Wähle Datum und Zeit">
-            @for (datum of date; track $index) {
-            <mat-option (value)="datum.toLowerCase()">{{datum}}</mat-option>
+            @for (datum of date; track datum) {
+              <mat-option [value]="datum.toLowerCase()">{{datum}}</mat-option>
             }
           </mat-select>
           <div matSuffix class="dropdown-icon">
