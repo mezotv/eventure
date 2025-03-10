@@ -2,12 +2,13 @@
   <div class="logo" routerLink="/">
     <span class="logo-event">Event</span><span class="logo-ture">ure</span>
   </div>
-  @if(!auth.isAuthenticated()) {
+  <div class="nav-links">
+    <a class="nav-link" routerLink="/search">Suche</a>
+  </div>
+  @if(!auth.isAuthenticated() && fullName === "") {
   <div class="auth-buttons">
     <a mat-button class="login-button" routerLink="/login">Anmelden</a>
-    <a mat-flat-button class="register-button" routerLink="/register"
-      >Registrieren</a
-    >
+    <a mat-flat-button class="register-button" routerLink="/register">Registrieren</a>
   </div>
   } @else {
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="name">
@@ -17,7 +18,31 @@
     <a mat-menu-item routerLink="/profile">Profile</a>
     <a mat-menu-item routerLink="/dashboard">Dashboard</a>
     <mat-divider></mat-divider>
-    <button mat-menu-item (click)="auth.logout()">Logout</button>
+    <button mat-menu-item routerLink="/logout">Logout</button>
   </mat-menu>
+  }
+  <div class="hamburger" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="mobile-menu" [class.active]="mobileMenuOpen">
+  <div class="mobile-links">
+    <a class="mobile-link" routerLink="/search" (click)="closeMobileMenu()">Suche</a>
+  </div>
+  @if(!auth.isAuthenticated() && fullName === "") {
+  <div class="mobile-auth">
+    <a class="mobile-link" routerLink="/login" (click)="closeMobileMenu()">Anmelden</a>
+    <a class="mobile-link highlight" routerLink="/register" (click)="closeMobileMenu()">Registrieren</a>
+  </div>
+  } @else {
+  <div class="mobile-user">
+    <p class="user-name">{{ fullName }}</p>
+    <a class="mobile-link" routerLink="/profile" (click)="closeMobileMenu()">Profile</a>
+    <a class="mobile-link" routerLink="/dashboard" (click)="closeMobileMenu()">Dashboard</a>
+    <a class="mobile-link" routerLink="/logout" (click)="closeMobileMenu()">Logout</a>
+  </div>
   }
 </div>

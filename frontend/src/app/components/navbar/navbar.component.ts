@@ -17,4 +17,25 @@ export class NavbarComponent {
   protected isLoggedIn = this.auth.isAuthenticated();
 
   protected fullName = this.auth.getFullName();
+
+  mobileMenuOpen = false;
+
+toggleMobileMenu() {
+  this.mobileMenuOpen = !this.mobileMenuOpen;
+  const hamburger = document.querySelector('.hamburger');
+  
+  if (this.mobileMenuOpen) {
+    document.body.style.overflow = 'hidden';
+    hamburger?.classList.add('active');
+  } else {
+    document.body.style.overflow = 'auto';
+    hamburger?.classList.remove('active');
+  }
+}
+closeMobileMenu() {
+  this.mobileMenuOpen = false;
+  const hamburger = document.querySelector('.hamburger');
+  document.body.style.overflow = 'auto';
+  hamburger?.classList.remove('active');
+}
 }
